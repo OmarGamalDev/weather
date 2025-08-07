@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: NoWeatherBody(),
+      body: WeatherInfoBody(),
     );
   }
 }
