@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather/views/search_view.dart';
 import 'package:weather/widgets/no_weather_body.dart';
+import 'package:weather/widgets/search_view_body.dart';
 import 'package:weather/widgets/weather_info_body.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -15,7 +17,7 @@ class HomeScreen extends StatelessWidget {
           "Weather",
           style: TextStyle(
             color: Colors.white,
-            fontSize: 26,
+            fontSize: 26.sp,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -31,11 +33,11 @@ class HomeScreen extends StatelessWidget {
                 ),
               );
             },
-            icon: Icon(Icons.search, color: Colors.white, size: 30),
+            icon: Icon(Icons.search, color: Colors.white, size: 30.sp),
           ),
         ],
       ),
-      body: WeatherInfoBody(),
+      body:weatherModel==null? NoWeatherBody(): WeatherInfoBody(),
     );
   }
 }

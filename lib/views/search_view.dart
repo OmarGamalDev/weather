@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather/widgets/search_view_body.dart';
 
 class SearchView extends StatelessWidget {
@@ -13,7 +14,7 @@ class SearchView extends StatelessWidget {
           "Search City",
           style: TextStyle(
             color: Colors.white,
-            fontSize: 26,
+            fontSize: 26.sp,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -21,7 +22,7 @@ class SearchView extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back, color: Colors.white, size: 30),
+          icon: Icon(Icons.arrow_back, color: Colors.white, size: 30.sp),
         ),
       ),
       body: SearchViewBody(),

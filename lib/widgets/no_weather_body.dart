@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NoWeatherBody extends StatelessWidget {
   const NoWeatherBody({super.key});
@@ -10,13 +11,13 @@ class NoWeatherBody extends StatelessWidget {
       children: [
         Center(
           child: Text(
-            "there is no weather 🤨 start",
-            style: TextStyle(color: Colors.black, fontSize: 30),
+            "there is no weather 😔",
+            style: TextStyle(color: Colors.black, fontSize: 28.sp),
           ),
         ),
         Text(
-          "searching now 🔍",
-          style: TextStyle(color: Colors.black, fontSize: 30),
+          "start searching now 🔍",
+          style: TextStyle(color: Colors.black, fontSize: 28.sp),
         ),
       ],
     );

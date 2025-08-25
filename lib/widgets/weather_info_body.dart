@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather/widgets/search_view_body.dart';
 
 class WeatherInfoBody extends StatelessWidget {
   const WeatherInfoBody({super.key});
@@ -9,40 +10,43 @@ class WeatherInfoBody extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Alxendria",
-          style: TextStyle(
+          weatherModel!.cityName,
+          style: const TextStyle(
             color: Colors.black,
             fontSize: 32,
             fontWeight: FontWeight.bold,
           ),
         ),
         Text(
-          "Updated at 7:30",
-          style: TextStyle(color: Colors.black, fontSize: 25),
+          weatherModel!.time,
+          style: const TextStyle(color: Colors.black, fontSize: 25),
         ),
-        SizedBox(height: 50),
+        const SizedBox(height: 50),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Image.asset("assets/images/clear.png"),
-            Text("17", style: TextStyle(color: Colors.black, fontSize: 32)),
+            Image.network("https:${weatherModel!.image}"),
+            Text(
+              weatherModel!.temp.toString(),
+              style: const TextStyle(color: Colors.black, fontSize: 32),
+            ),
             Column(
               children: [
                 Text(
-                  "Max temp:17",
-                  style: TextStyle(color: Colors.black, fontSize: 20),
+                  "Max temp: ${weatherModel!.maxTemp}",
+                  style: const TextStyle(color: Colors.black, fontSize: 20),
                 ),
                 Text(
-                  "Min temp:30",
-                  style: TextStyle(color: Colors.black, fontSize: 20),
+                  "Min temp: ${weatherModel!.minTemp}",
+                  style: const TextStyle(color: Colors.black, fontSize: 20),
                 ),
               ],
             ),
           ],
         ),
-        SizedBox(height: 50),
+        const SizedBox(height: 50),
         Text(
-          "Light Rain",
+          weatherModel!.weatherCondation,
           style: TextStyle(
             color: Colors.black,
             fontSize: 25,
