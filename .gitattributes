@@ -1,0 +1,25 @@
+*.dart linguist-detectable=true
+*.cpp linguist-detectable=false
+*.c linguist-detectable=false
+*.cc linguist-detectable=false
+*.h linguist-detectable=false
+*.hpp linguist-detectable=false
+*.swift linguist-detectable=false
+*.java linguist-detectable=false
+*.kt linguist-detectable=false
+*.xml linguist-detectable=false
+*.html linguist-detectable=false
+*.json linguist-detectable=false
+*.yaml linguist-detectable=false
+*.yml linguist-detectable=false
+*.txt linguist-detectable=false
+*.gradle linguist-detectable=false
+*.iml linguist-detectable=false
+*.md linguist-detectable=false
+*.bat linguist-detectable=false
+
+android/** linguist-detectable=false
+ios/** linguist-detectable=false
+macos/** linguist-detectable=false
+windows/** linguist-detectable=false
+linux/** linguist-detectable=false
