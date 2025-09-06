@@ -4,8 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:weather/cubit/weather_cubit.dart';
-import 'package:weather/services/weather_service.dart';
-import 'package:weather/views/home_view.dart';
 
 class SearchViewBody extends StatelessWidget {
   const SearchViewBody({super.key});
@@ -22,7 +20,10 @@ class SearchViewBody extends StatelessWidget {
         } else if (state is WeatherFailureState) {
           showTopSnackBar(
             Overlay.of(context, rootOverlay: true),
-            CustomSnackBar.error(message: "Something went wrong"),
+            CustomSnackBar.error(
+              message:
+                  state.errorMessage ?? "Oops There Was An Error Try Later",
+            ),
           );
         }
       },
@@ -36,9 +37,10 @@ class SearchViewBody extends StatelessWidget {
                 controller: context.read<WeatherCubit>().controller,
                 onSubmitted: (value) async {
                   if (value.isNotEmpty) {
-                    context.read<WeatherCubit>().getCurrentWeather(
-                      cityName: value,
+                    var getWeatherCubit = BlocProvider.of<WeatherCubit>(
+                      context,
                     );
+                    getWeatherCubit.getCurrentWeather(cityName: value);
                     Navigator.pop(context);
                   }
                 },
@@ -54,14 +56,9 @@ class SearchViewBody extends StatelessWidget {
                   hintText: "Enter City Name",
                   suffixIcon: IconButton(
                     onPressed: () {
-                      final cubit = context
-                          .read<
-                            WeatherCubit
-                          >(); // ✅ نفس الـ Cubit بتاع BlocProvider
+                      final cubit = context.read<WeatherCubit>();
                       final text = cubit.controller.text;
-
                       if (text.isNotEmpty) {
-                        cubit.clear(); // دي هتمسح التكست وترجع الحالة Initial
                         cubit.getCurrentWeather(cityName: text);
                         Navigator.pop(context);
                       }

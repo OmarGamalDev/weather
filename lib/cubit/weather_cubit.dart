@@ -5,21 +5,18 @@ import 'package:weather/services/weather_service.dart';
 part 'weather_state.dart';
 
 class WeatherCubit extends Cubit<WeatherState> {
-  WeatherCubit() : super(WeatherInitial());
+  WeatherCubit() : super(WeatherInitialState());
+   WeatherModel? weatherModel;
   final TextEditingController controller = TextEditingController();
   getCurrentWeather({required String cityName}) async {
     emit(WeatherLoadingState());
     try {
-      WeatherModel weatherModel = await WeatherService().getWeather(
+       weatherModel = await WeatherService().getWeather(
         cityName: cityName,
       );
-      emit(WeatherSuccessState(weatherModel: weatherModel));
+      emit(WeatherSuccessState(weatherModel: weatherModel!));
     } catch (e) {
-      emit(WeatherFailureState());
+      emit(WeatherFailureState(errorMessage: e.toString()));
     }
-  }
-void clear() {
-    controller.clear();
-    emit(WeatherInitial());
   }
 }
