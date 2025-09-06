@@ -7,8 +7,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:weather/cubit/weather_cubit.dart';
 import 'package:weather/views/home_view.dart';
 
-Future <void> main()async {
-  await dotenv.load(fileName: ".env");
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: "assets/.env");
   runApp(const WeatherApp());
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
