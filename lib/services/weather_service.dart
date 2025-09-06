@@ -1,11 +1,12 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:weather/models/weather_model.dart';
 
 class WeatherService {
   final Dio dio = Dio();
-  final String baseUrl = "http://api.weatherapi.com/v1";
-  final String apiKey = "b55961a995114fbbbf3231502250409";
+  final String baseUrl = dotenv.env['BASE_URL']??"" ;
+  final String apiKey = dotenv.env['API_KEY']??"";
   Future<WeatherModel> getWeather({required String cityName}) async {
     try {
       Response response = await dio.get(

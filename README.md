@@ -51,17 +51,16 @@ To get a local copy up and running, follow these simple steps.
     cd weather
     ```
 
-2.  **Get an API Key:**
+2.  **Configure API Key using `.env`:**
     - Sign up on [WeatherAPI.com](https://www.weatherapi.com/) to get a free API key.
-    - Open the `lib/services/weather_service.dart` file.
-    - Replace the placeholder `apiKey` with your own key:
-      ```dart
-      class WeatherService {
-        // ...
-        final String apiKey = "YOUR_API_KEY_HERE";
-        // ...
-      }
+    - Create a new file called `.env` in the root directory of the project and add the following line:
       ```
+      API_KEY=YOUR_API_KEY_HERE
+      ```
+    - You can check the `.env.example` file in the repository as a reference.
+
+    > **Important:** Do NOT hardcode your API key in the source code.  
+    > The project uses [flutter_dotenv](https://pub.dev/packages/flutter_dotenv) to load the API key securely from the `.env` file.
 
 3.  **Install dependencies:**
     ```sh
